@@ -8,6 +8,9 @@
 
 #import "MUS147ViewController.h"
 
+#import "MUS147AQPlayer.h"
+extern MUS147AQPlayer* aqp;
+
 @interface MUS147ViewController ()
 
 @end
@@ -24,6 +27,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)setFreq:(id)sender{
+    aqp.freq = freqSlider.value*5000;
+}
+
+-(IBAction)setAmp:(id)sender{
+    aqp.amp = ampSlider.value;
 }
 
 @end

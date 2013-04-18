@@ -40,6 +40,9 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 
 @implementation MUS147AQPlayer
 
+@synthesize freq;
+@synthesize amp;
+
 - (void)dealloc {
 
 	[self stop];
@@ -109,13 +112,13 @@ void MUS147AQBufferCallback(void *inUserData, AudioQueueRef inAQ, AudioQueueBuff
 -(void)fillAudioBuffer:(Float64*)buffer:(UInt32)num_samples
 {
     // compute normalized angular frequency
-    Float64 deltaNormPhase = 440. / 22050.;
+    Float64 deltaNormPhase = freq / 22050.;
     
     // iterate through each element in the buffer
     for (UInt32 i = 0; i < num_samples; i++)
     {
         // assign value of sinusoid at phase position to buffer element
-		buffer[i] = sin(normPhase * 2 * M_PI);
+		buffer[i] = amp*sin(normPhase * 2 * M_PI);
         
         // advance the phase position
 		normPhase += deltaNormPhase;

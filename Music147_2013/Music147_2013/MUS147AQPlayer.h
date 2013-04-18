@@ -23,7 +23,13 @@
     
     /* the follow member variable will soon be obsolete */
     Float64 normPhase;
+    
+    Float64 freq;
+    Float64 amp;
 }
+
+@property (readwrite) Float64 freq;
+@property (readwrite) Float64 amp;
 
 -(void)setup;
 
